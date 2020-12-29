@@ -1,0 +1,77 @@
+\documentclass[border=3mm]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes.gates.logic.US,shapes.gates.logic.IEC,calc}
+\begin{document}
+\thispagestyle{empty}
+\tikzstyle{branch}=[fill,shape=circle,minimum size=3pt,inner sep=0pt]
+\begin{tikzpicture}[label distance=5mm]
+
+   
+   
+    \node (x2) at (0,1.5) {$D$};
+    \node (x1) at (0,2.5) {$C$};
+    \node (x0) at (0,3.5) {$B$};
+    \node (x3) at (1,-1.5) {$C$};
+    \node (x4) at (2,-2.5) {$B$};
+    \node (x5) at (3,-3.5) {$A$};
+    \node (x6) at (0,0.5) {$D$};
+    \node (x7) at (13,0.5) {$(B'C'D'+ABCD')$};
+
+    \node[nand gate US, draw, logic gate inputs=nn] at ($(1.5,3)$) (Nand0) {};
+    \node[nand gate US, draw, logic gate inputs=nn] at ($(1.5,2)$) (Nand1) {};
+    \node[nand gate US, draw, logic gate inputs=nn] at ($(1.5,1)$) (Nand2) {};
+    \node[nand gate US, draw, logic gate inputs=nn] at ($(2,0)$) (Nand3) {};
+ 
+    \node[nand gate US, draw, logic gate inputs=nnnn] at ($(5,-1)$) (Nand4) {};
+    \node[nand gate US, draw, logic gate inputs=nnn] at ($(5,2)$) (Nand5) {};
+   
+    \node[nand gate US, draw, logic gate inputs=nn] at ($(11,0.5)$) (Nand10) {};
+    
+   
+    
+    \draw (x2) |- (Nand2.input 1);
+    \draw (x2) |- (Nand2.input 2);
+
+    \draw (x0) |- (Nand0.input 1);
+    \draw (x0) |- (Nand0.input 2);
+    
+    \draw (x1) |- (Nand1.input 2);
+    \draw (x1) |- (Nand1.input 1);
+    
+    \draw (x6) |- (Nand3.input 1);
+    \draw (x6) |- (Nand3.input 2);
+    
+     \draw (x3) |- (Nand4.input 2);
+     \draw (x4) |- (Nand4.input 3);
+     \draw (x5) |- (Nand4.input 4);
+
+    
+    \draw (Nand3.output) |- (Nand4.input 1);
+    \draw (Nand2.output) |- (Nand5.input 3);
+    \draw (Nand0.output) |- (Nand5.input 1);
+    \draw (Nand1.output) |- (Nand5.input 2);
+    \draw (Nand5.output) |- (Nand10.input 1);
+    \draw (Nand4.output) |- (Nand10.input 2);
+   
+
+    
+
+
+
+
+
+
+
+
+\end{tikzpicture}
+
+
+         
+
+         
+
+
+%    \end{questions}
+
+\end{document}
